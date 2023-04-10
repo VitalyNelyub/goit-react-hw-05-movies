@@ -1,3 +1,10 @@
 export default function Movies() {
-  return <h1>Страница с фильмами</h1>;
+  return (
+    <form>
+      <input type="text" placeholder="Search images and photos" />
+      <button type="submit">
+        <span>Search</span>
+      </button>
+    </form>
+  );
 }
