@@ -8,21 +8,21 @@ export default function MovieDetails() {
   //   console.log(movieId);
 
   useEffect(() => {
-    console.log(detailMovie);
+    // console.log(detailMovie);
     if (detailMovie === null) {
-      console.log(movieId);
-      fetchDetailMovie(movieId).then(data => console.log(data));
+      // console.log(movieId);
+      // fetchDetailMovie(movieId).then(data => console.log(data));
       fetchDetailMovie(movieId).then(data => setDetailMovie(data.data));
     }
   });
 
   return (
-    <div>
+    <>
       {detailMovie && (
         <div>
           <h2>{detailMovie.original_title}</h2>
           <h3>
-            Release date: 
+            Release date:
             <p>{detailMovie.release_date}</p>
           </h3>
           <h3>
@@ -35,6 +35,6 @@ export default function MovieDetails() {
           </h3>
         </div>
       )}
-    </div>
+    </>
   );
 }
