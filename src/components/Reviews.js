@@ -19,7 +19,7 @@ export default function Reviews() {
   return (
     <>
       <h1>Reviews</h1>
-      <p>{dataReviews}</p>
+      <p>{dataReviews ? dataReviews : 'SORRY, NO MORE INFORMATION'}</p>
     </>
   );
 
