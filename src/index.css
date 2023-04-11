@@ -16,7 +16,7 @@ code {
 
 header {
   background-color: rgba(68, 152, 230, 0.779);
-  width: 1200px;
+  /* width: 1200px; */
   height: 80px;
   align-items: center;
   display: flex;
