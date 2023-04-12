@@ -1,0 +1,12 @@
+.list__title {
+    font-size: 32px;
+    color: red;
+}
+
+.list__item {
+  list-style: none;
+  font-size: 19px;
+  color: blue;
+  margin-bottom: 7px;
+  text-decoration: underline;
+}

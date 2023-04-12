@@ -1,41 +1,28 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import fetchReviews from 'Api/ReviewsApi';
+import css from './Module.css/Reviews.module.css';
 
 export default function Reviews() {
   const [dataReviews, setDataReviews] = useState(null);
 
+  const { movieId } = useParams();
+
   useEffect(() => {
     if (dataReviews === null) {
-      // fetchReviews(movieId).then(data => console.log(data.data.results[0].content));
-      fetchReviews(movieId).then(data =>
-        setDataReviews(data.data.results[0].content)
-      );
+      fetchReviews(movieId).then(data => {
+        if (data.data.results.length !==0)
+          setDataReviews(data.data.results[0].content);
+      });
     }
-  });
-  const { movieId } = useParams();
-  //   console.log(movieId);
-  //   console.log(dataReviews);
+  }, [dataReviews, movieId]);
+
   return (
     <>
       <h1>Reviews</h1>
-      <p>{dataReviews ? dataReviews : 'SORRY, NO MORE INFORMATION'}</p>
+      <p className={css.reviews__text}>
+        {dataReviews ? dataReviews : 'SORRY, NO MORE INFORMATION'}
+      </p>
     </>
   );
-
-  //   return (
-  //     dataReviews && (
-  //       <div>
-  //         {dataReviews.map(actor => (
-  //           <li key={actor.id}>
-  //             <img
-  //               src={`https://image.tmdb.org/t/p/original/${actor.profile_path}`}
-  //               alt={actor.name} width={100} height={150}
-  //             ></img>
-  //             <p>{actor.name}</p>
-  //           </li>
-  //         ))}
-  //       </div>
-  //     )
-  //   );
 }

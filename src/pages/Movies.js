@@ -1,60 +1,46 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import searchMovies from 'Api/SearchMovies';
+import { useSearchParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import css from './Module.css/Movies.module.css'
 
 export default function Movies() {
-  const [query, setQuery] = useState('');
-  const [searchData, setSearchData] = useState(null);
+  const [movies, setMovies] = useState([]);
 
-  const getQuery = e => {
-    // console.log(e.target.value);
-    setQuery(e.target.value);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const querySearch = searchParams.get('query') || '';
+
+  useEffect(() => {
+    searchMovies(querySearch).then(data => setMovies(data.data.results));
+  }, [querySearch]);
+  
+
+  const searchFilmsOnSubmit = () => {
+    if(!querySearch) return
+    searchMovies(querySearch).then(data => setMovies(data.data.results));
   };
-
-  const getQueryOnSubmit = e => {
-    e.preventDefault();
-    // console.log(query);
-    searchMovies(query).then(data => setSearchData(data.data.results));
-
-    // setQuery('');
-  };
-
-  // console.log(searchData);   
+  
 
   return (
     <>
-      <form onSubmit={getQueryOnSubmit}>
+      <form onSubmit={e => e.preventDefault()}>
         <input
           type="text"
-          placeholder="Search images and photos"
-          onChange={getQuery}
-          value={query}
+          value={querySearch}
+          onChange={e => setSearchParams({ query: e.target.value })}
+           className={css.input}
         />
-        <button type="submit">
-          <span>Search</span>
-        </button>
+        <button onClick={searchFilmsOnSubmit} className={css.search__btn}>Search</button>
       </form>
-      {searchData && (
-        <div>
-          {searchData.map(movie => (
+      {movies.length > 0 && (
+        <ul>
+          {movies.map(movie => (
             <Link key={movie.id} to={`/movies/${movie.id}`}>
-              <li>{movie.title}</li>
+              <li className={css.list__item}>{movie.title}</li>
             </Link>
           ))}
-        </div>
+        </ul>
       )}
     </>
   );
 }
-
-//  return (
-//     <ul>
-//       <h1>Most popular movies of the last day</h1>
-//       {mostPopularMovies.map(movie => (
-//         <Link key={movie.id} to={`/movies/${movie.id}`}>
-//           <li>{movie.title}</li>
-//         </Link>
-//       ))}
-//     </ul>
-//   );
-// }

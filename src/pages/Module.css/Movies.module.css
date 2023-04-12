@@ -1,0 +1,21 @@
+.input {
+  margin-top: 20px;
+  margin-left: auto;
+  width: 300px;
+  font-size: 18px;
+padding: 7px;
+}
+
+.search__btn {
+  font-size: 18px;
+  padding: 7px;
+  background-color: rgba(68, 152, 230, 0.779);
+}
+
+.list__item {
+  list-style: none;
+  font-size: 19px;
+  color: blue;
+  margin-bottom: 7px;
+  text-decoration: underline;
+}

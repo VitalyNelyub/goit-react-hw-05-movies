@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import fetchCastMovie from 'Api/CastApi';
+import css from './Module.css/Cast.module.css'
 
 export default function Cast() {
   const [dataCast, setDataCast] = useState(null);
@@ -16,9 +17,9 @@ export default function Cast() {
 
   return (
     dataCast && (
-      <div>
+      <ul className={css.actor__list}>
         {dataCast.map(actor => (
-          <li key={actor.id}>
+          <li key={actor.id} className={css.actor__item}>
             <img
               src={
                 actor.profile_path
@@ -26,13 +27,13 @@ export default function Cast() {
                   : 'https://mir-s3-cdn-cf.behance.net/projects/404/8a3e45124050039.Y3JvcCw4MDgsNjMyLDAsMA.png'
               }
               alt={actor.name}
-              width={150}
-              height={200}
+              width={200}
+              height={300}
             ></img>
-            <p>{actor.name}</p>
+            <p className={css.actor__name}>{actor.name}</p>
           </li>
         ))}
-      </div>
+      </ul>
     )
   );
 }
