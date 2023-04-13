@@ -1,22 +1,25 @@
-import { Outlet, useParams } from 'react-router-dom';
+import { Outlet, useLocation, useParams } from 'react-router-dom';
 import fetchDetailMovie from 'Api/Detail';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import css from './Module.css/MovieDetails.module.css';
 
 export default function MovieDetails() {
   const [detailMovie, setDetailMovie] = useState(null);
   const { movieId } = useParams();
+  const location = useLocation();
+  const back = useRef(location.state?.from ?? "/");
+
 
   useEffect(() => {
     if (detailMovie === null) {
       fetchDetailMovie(movieId).then(data => setDetailMovie(data.data));
     }
   });
-  // console.log(detailMovie);
 
   return (
     <>
+      <Link to={back.current}>GO BACK</Link>
       {detailMovie && (
         <>
           <div className={css.details}>
@@ -44,13 +47,17 @@ export default function MovieDetails() {
             </div>
           </div>
           <div>
-            <h2>More information about movie</h2>
-            <ul>
-              <li>
-                <Link to="cast">Cast</Link>
+            <h2 className={css.more__title}>More information about movie</h2>
+            <ul className={css.more}>
+              <li className={css.more__info}>
+                <Link to="cast" className={css.more__info}>
+                  Cast
+                </Link>
               </li>
-              <li>
-                <Link to="reviews">Reviews</Link>
+              <li className={css.more__info}>
+                <Link to="reviews" className={css.more__info}>
+                  Reviews
+                </Link>
               </li>
             </ul>
             <Outlet />

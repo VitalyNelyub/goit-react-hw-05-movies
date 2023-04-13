@@ -22,7 +22,7 @@ export default function Reviews() {
       {dataReviews ? (
         dataReviews.map(data => (
           <div key={nanoid()}>
-            <h1>{data.author}</h1>
+            <h2>{data.author}</h2>
             <p className={css.reviews__text}>{data.content}</p>
           </div>
         ))

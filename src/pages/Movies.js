@@ -1,41 +1,50 @@
 import { useState, useEffect } from 'react';
 import searchMovies from 'Api/SearchMovies';
-import { useSearchParams } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import css from './Module.css/Movies.module.css';
 
 export default function Movies() {
   const [movies, setMovies] = useState([]);
+  const location = useLocation();
 
   const [searchParams, setSearchParams] = useSearchParams();
-  const querySearch = searchParams.get('query') || '';
+  const querySearch = searchParams.get('query') ?? '';
 
-  useEffect(() => {    
+  useEffect(() => {
     if (querySearch)
-    searchMovies(querySearch).then(data => setMovies(data.data.results));
+      searchMovies(querySearch).then(data => setMovies(data.data.results));
   }, [querySearch]);
 
-  const searchFilmsOnSubmit = (e) => {
-    e.preventDefault()
-    setSearchParams({ query: e.target[0].value })
+  // useEffect(() => {
+  //   if (!querySearch)
+  //   setSearchParams({ })
+  // }, [querySearch, setSearchParams]);
+
+  const searchFilmsOnSubmit = e => {
+    e.preventDefault();
+    setSearchParams({ query: e.target[0].value });
     searchMovies(querySearch).then(data => setMovies(data.data.results));
   };
-
   return (
     <>
       <form onSubmit={searchFilmsOnSubmit}>
         <input
           type="text"
           className={css.input}
+          // value={querySearch}
+          // onChange={}
         />
-        <button className={css.search__btn}>
-          Search
-        </button>
+        <button className={css.search__btn}>Search</button>
       </form>
       {movies.length > 0 && (
         <ul>
           {movies.map(movie => (
-            <Link key={movie.id} to={`/movies/${movie.id}`}>
+            <Link
+              state={{ from: location }}
+              key={movie.id}
+              to={`/movies/${movie.id}`}
+            >
               <li className={css.list__item}>{movie.title}</li>
             </Link>
           ))}
