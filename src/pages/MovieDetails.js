@@ -1,6 +1,6 @@
 import { Outlet, useLocation, useParams } from 'react-router-dom';
 import fetchDetailMovie from 'Api/Detail';
-import { useEffect, useRef, useState } from 'react';
+import { Suspense, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import css from './Module.css/MovieDetails.module.css';
 
@@ -8,8 +8,7 @@ export default function MovieDetails() {
   const [detailMovie, setDetailMovie] = useState(null);
   const { movieId } = useParams();
   const location = useLocation();
-  const back = useRef(location.state?.from ?? "/");
-
+  const back = useRef(location.state?.from ?? '/');
 
   useEffect(() => {
     if (detailMovie === null) {
@@ -19,7 +18,7 @@ export default function MovieDetails() {
 
   return (
     <>
-      <Link to={back.current}>GO BACK</Link>
+      <Link to={back.current}  className={css.back}>GO BACK</Link>
       {detailMovie && (
         <>
           <div className={css.details}>
@@ -60,7 +59,9 @@ export default function MovieDetails() {
                 </Link>
               </li>
             </ul>
-            <Outlet />
+            <Suspense fallback={<h1>Loading...</h1>}>
+              <Outlet />
+            </Suspense>
           </div>
         </>
       )}

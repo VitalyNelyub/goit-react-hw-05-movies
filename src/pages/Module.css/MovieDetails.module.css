@@ -39,3 +39,12 @@
   transform: scale(1.01);
   color: rgb(15, 13, 163);
 }
+
+.back {
+  font-size: 18px;
+  font-weight: 600;
+  color:red;
+  margin: 20px 0 0 20px;
+  display: block;
+  text-decoration: none;
+}
