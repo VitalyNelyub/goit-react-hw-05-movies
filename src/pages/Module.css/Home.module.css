@@ -1,12 +1,19 @@
 .list__title {
-    font-size: 32px;
-    color: red;
+  font-size: 32px;
+  color: rgb(15, 13, 163);
 }
 
 .list__item {
   list-style: none;
   font-size: 19px;
-  color: blue;
+  font-weight: 600;
+  color: rgb(72, 73, 72);
   margin-bottom: 7px;
   text-decoration: underline;
+  transition: all 250ms;
+}
+
+.list__item:hover {
+  transform: scale(1.01);
+  color: rgb(15, 13, 163);
 }

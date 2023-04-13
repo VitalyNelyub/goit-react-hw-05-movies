@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import searchMovies from 'Api/SearchMovies';
 import { useSearchParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import css from './Module.css/Movies.module.css'
+import css from './Module.css/Movies.module.css';
 
 export default function Movies() {
   const [movies, setMovies] = useState([]);
@@ -10,27 +10,27 @@ export default function Movies() {
   const [searchParams, setSearchParams] = useSearchParams();
   const querySearch = searchParams.get('query') || '';
 
-  useEffect(() => {
+  useEffect(() => {    
+    if (querySearch)
     searchMovies(querySearch).then(data => setMovies(data.data.results));
   }, [querySearch]);
-  
 
-  const searchFilmsOnSubmit = () => {
-    if(!querySearch) return
+  const searchFilmsOnSubmit = (e) => {
+    e.preventDefault()
+    setSearchParams({ query: e.target[0].value })
     searchMovies(querySearch).then(data => setMovies(data.data.results));
   };
-  
 
   return (
     <>
-      <form onSubmit={e => e.preventDefault()}>
+      <form onSubmit={searchFilmsOnSubmit}>
         <input
           type="text"
-          value={querySearch}
-          onChange={e => setSearchParams({ query: e.target.value })}
-           className={css.input}
+          className={css.input}
         />
-        <button onClick={searchFilmsOnSubmit} className={css.search__btn}>Search</button>
+        <button className={css.search__btn}>
+          Search
+        </button>
       </form>
       {movies.length > 0 && (
         <ul>
