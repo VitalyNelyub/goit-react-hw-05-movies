@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import fetchMostPopolarMovies from 'Api/Popular';
+import {fetchMostPopolarMovies} from 'Api/ApiSearch';
 import css from './Module.css/Home.module.css';
 
 export default function Home() {

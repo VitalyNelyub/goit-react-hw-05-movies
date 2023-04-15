@@ -1,5 +1,5 @@
 import { Outlet, useLocation, useParams } from 'react-router-dom';
-import fetchDetailMovie from 'Api/Detail';
+import {fetchDetailMovie} from 'Api/ApiSearch';
 import { Suspense, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import css from './Module.css/MovieDetails.module.css';

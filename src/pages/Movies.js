@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import searchMovies from 'Api/SearchMovies';
+import {searchMovies} from 'Api/ApiSearch';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import css from './Module.css/Movies.module.css';

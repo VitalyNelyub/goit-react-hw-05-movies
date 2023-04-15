@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import fetchCastMovie from 'Api/CastApi';
+import {fetchCastMovie} from 'Api/ApiSearch';
 import css from './Module.css/Cast.module.css'
 
 export default function Cast() {

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import fetchReviews from 'Api/ReviewsApi';
+import {fetchReviews} from 'Api/ApiSearch';
 import css from './Module.css/Reviews.module.css';
 import { nanoid } from 'nanoid';
 
