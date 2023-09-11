@@ -1,28 +1,55 @@
+form {
+  margin: 0 auto;
+  text-align: center;
+}
+
 .input {
   margin-top: 20px;
   margin-left: auto;
   width: 300px;
   font-size: 18px;
-padding: 7px;
+  padding: 7px;
+  background-color: transparent;
+  outline: none;
+  border: 2px solid rgba(68, 152, 230, 0.779);
+  border-radius: 8px;
+  color: white;
 }
 
 .search__btn {
   font-size: 18px;
+  font-weight: 600;
+  color: rgba(68, 152, 230, 0.779);
   padding: 7px;
-  background-color: rgba(68, 152, 230, 0.779);
+  background-color: transparent;
+  border: 2px solid rgba(68, 152, 230, 0.779);
+  border-radius: 8px;
+  margin-left: 10px;
+  transition: all 250ms;
+}
+
+.search__btn:hover {
+  color: rgb(19, 205, 62);
+}
+
+.films_list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .list__item {
   list-style: none;
-  font-size: 19px;
+  font-size: 18px;
   font-weight: 600;
   color: rgb(72, 73, 72);
   margin-bottom: 7px;
   text-decoration: underline;
   transition: all 250ms;
+  color: white;
 }
 
 .list__item:hover {
   transform: scale(1.01);
-  color: rgb(15, 13, 163);
+  color: rgb(19, 205, 62);
 }

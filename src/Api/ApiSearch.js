@@ -35,5 +35,6 @@ export async function searchMovies(query) {
   const mostPopular = await axios.get(
     `${BASE_URL}/search/movie?api_key=${KEY}&language=en-US&page=1&include_adult=false&query=${query}`
   );
+
   return mostPopular;
 }

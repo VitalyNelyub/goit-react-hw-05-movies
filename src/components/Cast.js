@@ -8,12 +8,10 @@ export default function Cast() {
 
   useEffect(() => {
     if (dataCast === null) {
-      //   fetchCastMovie(movieId).then(data => console.log(data.data.cast));
       fetchCastMovie(movieId).then(data => setDataCast(data.data.cast));
     }
   });
   const { movieId } = useParams();
-  //   console.log(movieId);
 
   return (
     dataCast && (
@@ -24,7 +22,7 @@ export default function Cast() {
               src={
                 actor.profile_path
                   ? `https://image.tmdb.org/t/p/original/${actor.profile_path}`
-                  : 'https://mir-s3-cdn-cf.behance.net/projects/404/8a3e45124050039.Y3JvcCw4MDgsNjMyLDAsMA.png'
+                  : 'https://static.thenounproject.com/png/5034901-200.png'
               }
               alt={actor.name}
               width={200}

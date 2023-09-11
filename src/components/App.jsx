@@ -14,8 +14,7 @@ export const App = () => {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
-        <Route path="movies" element={<Movies />}>         
-        </Route>
+        <Route path="movies" element={<Movies />}></Route>
         <Route path="movies/:movieId" element={<MovieDetails />}>
           <Route
             path="cast"
@@ -35,7 +34,7 @@ export const App = () => {
           />
         </Route>
       </Route>
-       <Route path='*' element={<NotFound />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };

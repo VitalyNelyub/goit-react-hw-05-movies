@@ -9,7 +9,6 @@
 
 .details__info {
   padding: 20px;
-  /* border: 1px solid tomato; */
 }
 
 .details__title {
@@ -17,9 +16,20 @@
   font-size: 34px;
 }
 
-.more__title, h2 {
+.more__title,
+h2 {
   font-size: 28px;
-  color: rgb(72, 73, 72);
+  color: red;
+}
+
+.release__info {
+  font-size: 22px;
+  color: rgb(170, 163, 163);
+}
+
+.details__text {
+  font-size: 16px;
+  color: white;
 }
 
 .more {
@@ -30,7 +40,7 @@
   font-size: 22px;
   font-weight: 600;
   text-decoration: none;
-  color: rgb(72, 73, 72);
+  color: white;
   transition: all 250ms;
   margin-bottom: 20px;
 }
@@ -43,7 +53,7 @@
 .back {
   font-size: 18px;
   font-weight: 600;
-  color:red;
+  color: red;
   margin: 20px 0 0 20px;
   display: block;
   text-decoration: none;

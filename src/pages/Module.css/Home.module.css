@@ -1,19 +1,43 @@
 .list__title {
-  font-size: 32px;
-  color: rgb(15, 13, 163);
+  font-size: 36px;
+  color: rgb(94, 28, 216);
+  text-align: center;
+}
+
+.film_list {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  row-gap: 30px;
+  flex-wrap: wrap;
+  align-items: center;
+  text-align: center;
+  margin-top: 70px;
+}
+
+.list__item_title {
+  display: block;
+  /* max-width: 150px; */
 }
 
 .list__item {
   list-style: none;
-  font-size: 19px;
+  font-size: 22px;
   font-weight: 600;
-  color: rgb(72, 73, 72);
   margin-bottom: 7px;
   text-decoration: underline;
+  color: rgb(170, 163, 163);
+  width: 280px;
+  height: 450px;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   transition: all 250ms;
 }
 
 .list__item:hover {
-  transform: scale(1.01);
-  color: rgb(15, 13, 163);
+  transform: scale(1.05);
+  color: rgb(13, 163, 53);
 }

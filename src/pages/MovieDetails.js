@@ -1,5 +1,5 @@
 import { Outlet, useLocation, useParams } from 'react-router-dom';
-import {fetchDetailMovie} from 'Api/ApiSearch';
+import { fetchDetailMovie } from 'Api/ApiSearch';
 import { Suspense, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import css from './Module.css/MovieDetails.module.css';
@@ -10,6 +10,8 @@ export default function MovieDetails() {
   const location = useLocation();
   const back = useRef(location.state?.from ?? '/');
 
+  console.log(detailMovie);
+
   useEffect(() => {
     if (detailMovie === null) {
       fetchDetailMovie(movieId).then(data => setDetailMovie(data.data));
@@ -18,7 +20,9 @@ export default function MovieDetails() {
 
   return (
     <>
-      <Link to={back.current}  className={css.back}>GO BACK</Link>
+      <Link to={back.current} className={css.back}>
+        GO BACK
+      </Link>
       {detailMovie && (
         <>
           <div className={css.details}>
@@ -32,17 +36,28 @@ export default function MovieDetails() {
               <h2 className={css.details__title}>
                 {detailMovie.original_title}
               </h2>
-              <h3>Release date:</h3>
-              <p>{detailMovie.release_date}</p>
+              <h3 className={css.release__info}>Release date:</h3>
+              <p className={css.details__text}>{detailMovie.release_date}</p>
 
-              <h3>Overview:</h3>
-              <p>{detailMovie.overview}</p>
+              <h3 className={css.release__info}>Overview:</h3>
+              <p className={css.details__text}>{detailMovie.overview}</p>
 
-              <h3>Popularity:</h3>
-              <p>{(detailMovie.vote_average * 10).toFixed()}%</p>
+              <h3 className={css.release__info}>Popularity:</h3>
+              <p className={css.details__text}>
+                {(detailMovie.vote_average * 10).toFixed()}%
+              </p>
 
-              <h3>Genres:</h3>
-              <p>{detailMovie.genres[0].name}</p>
+              <h3 className={css.release__info}>Genres:</h3>
+
+              {detailMovie.genres && (
+                <div className={css.details__genres}>
+                  {detailMovie.genres.map(genre => (
+                    <p className={css.details__text}>
+                      {genre.name}
+                    </p>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
           <div>
