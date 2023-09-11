@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/809.3d6b8fd9.chunk.css","mappings":"AAAA,8BAEI,aAAgB,CADhB,cAEJ","sources":["components/Module.css/Reviews.module.css"],"sourcesContent":[".reviews__text {\n    font-size: 20px;\n    color: aliceblue;\n}"],"names":[],"sourceRoot":""}
