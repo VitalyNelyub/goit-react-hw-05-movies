@@ -6,6 +6,9 @@
   @media screen and (min-width: 320px) {
     font-size: 36px;
   }
+  @media screen and (min-width: 768px) {
+    font-size: 46px;
+  }
 }
 
 .film_list {
@@ -14,6 +17,12 @@
   align-items: center;
   justify-content: space-between;
   gap: 25px;
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 50px;
+    justify-content: center;
+  }
 }
 
 .film_list a {
@@ -22,7 +31,7 @@
 
 .list__item_title {
   display: block;
-  margin:0 0 10px 0;
+  margin: 0 0 10px 0;
 }
 
 .list__item {
@@ -38,6 +47,18 @@
   justify-content: center;
   align-items: center;
   transition: all 250ms;
+  text-align: center;
+   @media screen and (min-width: 768px) {
+    width: 320px;
+    height: 440px;
+  }
+}
+
+.list__item img {
+  @media screen and (min-width: 768px) {
+    width: 280px;
+    height: 400px;
+  }
 }
 
 .list__item:hover {

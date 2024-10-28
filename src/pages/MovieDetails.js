@@ -10,13 +10,11 @@ export default function MovieDetails() {
   const location = useLocation();
   const back = useRef(location.state?.from ?? '/');
 
-  console.log(detailMovie);
-
   useEffect(() => {
     if (detailMovie === null) {
       fetchDetailMovie(movieId).then(data => setDetailMovie(data.data));
     }
-  });
+  }, [movieId, detailMovie]);
 
   return (
     <>
@@ -28,14 +26,12 @@ export default function MovieDetails() {
           <div className={css.details}>
             <img
               src={`https://image.tmdb.org/t/p/original/${detailMovie.poster_path}`}
-              alt={'detailMovie.original_title'}
+              alt={detailMovie.original_title}
               width={300}
               height={420}
-            ></img>
+            />
             <div className={css.details__info}>
-              <h2 className={css.details__title}>
-                {detailMovie.original_title}
-              </h2>
+              <h2 className={css.details__title}>{detailMovie.original_title}</h2>
               <h3 className={css.release__info}>Release date:</h3>
               <p className={css.details__text}>{detailMovie.release_date}</p>
 
@@ -48,19 +44,16 @@ export default function MovieDetails() {
               </p>
 
               <h3 className={css.release__info}>Genres:</h3>
-
               {detailMovie.genres && (
                 <div className={css.details__genres}>
                   {detailMovie.genres.map(genre => (
-                    <p className={css.details__text}>
-                      {genre.name}
-                    </p>
+                    <p key={genre.id} className={css.details__text}>{genre.name}</p>
                   ))}
                 </div>
               )}
             </div>
           </div>
-          <div>
+          <div  className={css.more}>
             <h2 className={css.more__title}>More information about movie</h2>
             <ul className={css.more}>
               <li className={css.more__info}>
