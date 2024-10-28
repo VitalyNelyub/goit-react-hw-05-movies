@@ -2,6 +2,7 @@
   font-size: 18px;
   color: rgb(94, 28, 216);
   text-align: center;
+  padding: 0 10px;
   @media screen and (min-width: 320px) {
     font-size: 36px;
   }
@@ -21,7 +22,7 @@
 
 .list__item_title {
   display: block;
-  margin:0 0 20px 0;
+  margin:0 0 10px 0;
 }
 
 .list__item {
